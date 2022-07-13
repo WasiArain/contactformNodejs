@@ -18,26 +18,19 @@ app.post("/", (req, res) => {
   const transporter = nodemailer.createTransport({
     service: "gmail",
     auth: {
-      user: "chaudhrywasiullah807@gmail.com",
-      pass: "password01!",
+      user: "wasinodemailtest@gmail.com",
+      pass: "ukafetuuypfyzxyq",
     },
   });
-
-  //   const transporter = nodemailer.createTransport({
-  //     service: "smtp.123-reg.co.uk",
-  //     port: 587,
-  //     secure: true,
-  //     auth: {
-  //       user: "info@conorbailey.com",
-  //       pass: "testpassword01!",
-  //     },
-  //   });
 
   const mailOptions = {
     from: req.body.email,
     to: "chaudhrywasiullah807@gmail.com",
-    subject: `Message from ${req.body.email}: ${req.body.subject}`,
-    text: req.body.message,
+    subject: `A new Message from ${req.body.email}: ${req.body.subject}`,
+    text: `Name: ${req.body.fullName},
+            Email: ${req.body.email},
+            Subject: ${req.body.subject},
+            Message: ${req.body.message}`,
   };
 
   transporter.sendMail(mailOptions, (error, info) => {
